@@ -1,7 +1,7 @@
 <template>
     <section class="input-search">
         <input type="text" v-model="inputSearch">
-        <button>
+        <button @click="$emit('searched', inputSearch)">
             Search
         </button>
     </section>

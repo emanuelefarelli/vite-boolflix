@@ -1,11 +1,13 @@
 <template>
     <main>
-        <AppSearchbar/>
+        <AppSearchbar @searched="getMovies"/>
+        <MovieList :movieList = "movieList"/>
     </main>
 </template>
 
 <script>
 import AppSearchbar from './AppSeachbar.vue';
+import MovieList from './MovieList.vue';
 import axios from 'axios';
 
 export default {
@@ -14,18 +16,19 @@ export default {
         return {
             apiUrl: 'https://api.themoviedb.org/3/search/movie',
             apiKey: '?api_key=d9eff1916dde6e2b9a1e35533c7273e3',
-            apiQuery: 'Ritorno al futuro',
+            // apiQuery: 'Ritorno al futuro',
             movieList:[],
         }
     },
     components: {
-        AppSearchbar
+        AppSearchbar,
+        MovieList,
     },
     methods: {
         getMovies(needle){
             axios.get(this.apiUrl + this.apiKey, {
                 params: {
-                    query: this.apiQuery,
+                    query: needle,
                 }
             })
                 .then( (response) => {
