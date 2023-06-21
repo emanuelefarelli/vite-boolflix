@@ -1,22 +1,20 @@
 <template>
     <main>
-        <AppSearchbar/>
+        <input type="text" v-model="inputSearch">
+        <button>
+            Search
+        </button>
     </main>
 </template>
 
 <script>
-import AppSearchbar from './AppSeachbar.vue';
-
 export default {
-    name: 'AppMain',
+    name: 'AppSearchbar',
     data() {
         return {
 
         }
     },
-    components: {
-        AppSearchbar
-    }
 }
 </script>
 
