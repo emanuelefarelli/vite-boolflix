@@ -1,13 +1,13 @@
 <template>
     <h3>
-        Titolo: {{ movieObj.title }} --
-        Titolo originale: {{ movieObj.original_title }}
+        Titolo: {{ tvObj.name }} --
+        Titolo originale: {{ tvObj.original_name }}
     </h3>
     <p>
-        Lingua originale: <img :src="flagUlr(movieObj.original_language)">
+        Lingua originale: <img :src="flagUlr(tvObj.original_language)"> {{ tvObj.original_language }}
     </p>
     <p>
-        Voto: {{ movieObj.vote_average }}
+        Voto: {{ tvObj.vote_average }}
     </p>
 </template>
 
@@ -35,7 +35,7 @@
             }
         },
         props:{
-            movieObj : Object,
+            tvObj : Object,
         },
     }
 </script>

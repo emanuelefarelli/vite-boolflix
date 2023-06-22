@@ -40,7 +40,6 @@ export default {
                 }
             })
                 .then( (response) => {
-                    // console.log(response);
                     this.tvList = response.data.results;
                     console.log(this.tvList);
                  })
@@ -55,7 +54,6 @@ export default {
                 }
             })
                 .then( (response) => {
-                    // console.log(response);
                     this.movieList = response.data.results;
                     console.log(this.movieList);
                  })
