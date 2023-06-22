@@ -81,7 +81,7 @@
                 return posterUrl
             },
             castVote(vote){
-                const castedVote = parseInt((vote * 5) / 10);
+                const castedVote = Math.ceil((vote * 5) / 10);
                 return castedVote
             }
         },
