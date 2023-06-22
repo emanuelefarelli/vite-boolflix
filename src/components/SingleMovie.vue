@@ -8,7 +8,7 @@
         Lingua originale: <img :src="flagUlr(movieObj.original_language)"> {{ movieObj.original_language }}
     </p>
     <p>
-        Voto: {{ movieObj.vote_average }}
+        Voto:  {{ castVote(movieObj.vote_average) }}
     </p>
 </template>
 
@@ -40,6 +40,10 @@
             buildPoster(finalUrl){
                 const posterUrl = this.posterStartUrl + finalUrl;
                 return posterUrl
+            },
+            castVote(vote){
+                const castedVote = parseInt((vote * 5) / 10);
+                return castedVote
             }
         },
         props:{

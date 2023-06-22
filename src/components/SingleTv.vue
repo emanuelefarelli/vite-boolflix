@@ -8,7 +8,7 @@
         Lingua originale: <img :src="flagUlr(tvObj.original_language)"> {{ tvObj.original_language }}
     </p>
     <p>
-        Voto: {{ tvObj.vote_average }}
+        Voto:  {{ castVote(tvObj.vote_average) }}
     </p>
 </template>
 
@@ -40,6 +40,10 @@
             buildPoster(finalUrl){
                 const posterUrl = this.posterStartUrl + finalUrl;
                 return posterUrl
+            },
+            castVote(vote){
+                const castedVote = parseInt((vote * 5) / 10);
+                return castedVote
             }
         },
         props:{
