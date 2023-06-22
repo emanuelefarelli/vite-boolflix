@@ -1,7 +1,13 @@
 <template>
     <main>
-        <AppSearchbar @searched="getMovies"/>
-        <MovieList :movieList = "movieList"/>
+        <AppSearchbar 
+            @searchedMovies="getMovies"
+            @searchedTv="getTv"
+        />
+        <MovieList 
+            :movieList = "movieList"
+            :tvList = "tvList"
+        />
     </main>
 </template>
 
@@ -14,10 +20,12 @@ export default {
     name: 'AppMain',
     data() {
         return {
-            apiUrl: 'https://api.themoviedb.org/3/search/movie',
+            apiUrlTv:'https://api.themoviedb.org/3/search/tv',
+            apiUrlMovies: 'https://api.themoviedb.org/3/search/movie',
             apiKey: '?api_key=d9eff1916dde6e2b9a1e35533c7273e3',
             // apiQuery: 'Ritorno al futuro',
             movieList:[],
+            tvList:[],
         }
     },
     components: {
@@ -25,8 +33,23 @@ export default {
         MovieList,
     },
     methods: {
+        getTv(needle){
+            axios.get(this.apiUrlTv + this.apiKey, {
+                params: {
+                    query: needle,
+                }
+            })
+                .then( (response) => {
+                    // console.log(response);
+                    this.tvList = response.data.results;
+                    console.log(this.tvList);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
         getMovies(needle){
-            axios.get(this.apiUrl + this.apiKey, {
+            axios.get(this.apiUrlMovies + this.apiKey, {
                 params: {
                     query: needle,
                 }
@@ -43,7 +66,8 @@ export default {
     },
     created(){
         this.getMovies();
-    }
+        this.getTv();
+    },
 }
 </script>
 
