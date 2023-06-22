@@ -1,4 +1,5 @@
 <template>
+    <img :src="buildPoster(tvObj.poster_path)" alt="tv series poster">
     <h3>
         Titolo: {{ tvObj.name }} --
         Titolo originale: {{ tvObj.original_name }}
@@ -17,6 +18,7 @@
         data(){
             return{
                 flagApiUrl: 'https://www.countryflagicons.com/FLAT/24/',
+                posterStartUrl: 'https://image.tmdb.org/t/p/w342'
             }
         },
         methods: {
@@ -29,9 +31,15 @@
                     lang = 'jp';
                 }else if(lang === 'hi'){
                     lang = 'in';
+                }else if(lang === 'ko'){
+                    lang = 'kr';
                 }
                 const langUrl = this.flagApiUrl + lang.toUpperCase() + '.png';
                 return langUrl;
+            },
+            buildPoster(finalUrl){
+                const posterUrl = this.posterStartUrl + finalUrl;
+                return posterUrl
             }
         },
         props:{
