@@ -1,6 +1,6 @@
 <template>
     <section class="input-search">
-        <input type="text" v-model="inputSearch">
+        <input type="text" v-model="inputSearch" @keyup.enter="$emit('searched', inputSearch)">
         <button @click="$emit('searched', inputSearch)">
             Search
         </button>

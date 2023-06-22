@@ -1,15 +1,14 @@
 <template>
     <ul>
         <li v-for="movieObj in movieList" :key=movieObj>
-            Titolo: {{ movieObj.title }}
-            Titolo originale: {{ movieObj.original_title }}
-            Lingua originale: {{ movieObj.original_language }}
-            Voto: {{ movieObj.vote_average }}
+            <SingleMovie :movieObj = "movieObj"/>
         </li>
     </ul>
 </template>
 
 <script>
+import SingleMovie from './SingleMovie.vue';
+
 export default {
     name: 'MovieList',
     data() {
@@ -19,6 +18,9 @@ export default {
     },
     props: {
         movieList : Array
+    },
+    components: {
+        SingleMovie,
     }
 }
 </script>
