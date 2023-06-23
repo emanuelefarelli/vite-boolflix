@@ -1,5 +1,12 @@
 <template>
-    <img :src="buildPoster(tvObj.poster_path)" alt="tv series poster">
+    <div v-if="tvObj.poster_path === null" class= "tv-poster">
+            <MissingPoster 
+                :movieTitle = "tvTitle"
+            />
+        </div>
+        <div v-else class="tv-poster">
+            <img :src="buildPoster(tvObj.poster_path)" alt="movie poster">
+        </div>
     <h3>
         Titolo: {{ tvObj.name }} --
         Titolo originale: {{ tvObj.original_name }}
@@ -52,12 +59,14 @@
 </template>
 
 <script>
+    import MissingPoster from './missingPoster.vue';
 
     export default {
         data(){
             return{
                 flagApiUrl: 'https://www.countryflagicons.com/FLAT/24/',
-                posterStartUrl: 'https://image.tmdb.org/t/p/w342'
+                posterStartUrl: 'https://image.tmdb.org/t/p/w342',
+                tvTitle: this.tvObj.name
             }
         },
         methods: {
@@ -72,6 +81,8 @@
                     lang = 'in';
                 }else if(lang === 'ko'){
                     lang = 'kr';
+                }else if(lang === 'cs'){
+                    lang = 'sx';
                 }
                 const langUrl = this.flagApiUrl + lang.toUpperCase() + '.png';
                 return langUrl;
@@ -84,6 +95,9 @@
                 const castedVote = Math.ceil((vote * 5) / 10);
                 return castedVote
             }
+        },
+        components: {
+            MissingPoster
         },
         props:{
             tvObj : Object,
