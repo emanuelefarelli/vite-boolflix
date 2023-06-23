@@ -8,54 +8,59 @@
         <div v-else class="movie-poster">
             <img :src="buildPoster(movieObj.poster_path)" alt="movie poster">
         </div>
-        <h3>
+        <h3 class="movie-title">
             Titolo: {{ movieObj.title }} --
             Titolo originale: {{ movieObj.original_title }}
         </h3>
-        <p>
-            Lingua originale: <img :src="flagUlr(movieObj.original_language)"> {{ movieObj.original_language }}
+        <p class="movie-language">
+            Lingua originale: <img :src="flagUlr(movieObj.original_language)">
         </p>
-        <div v-if="castVote(movieObj.vote_average) === 0">
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="castVote(movieObj.vote_average) === 1">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="castVote(movieObj.vote_average) === 2">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="castVote(movieObj.vote_average) === 3">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="castVote(movieObj.vote_average) === 4">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="castVote(movieObj.vote_average) === 5">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+        <p class="movie-overview">
+            {{ movieObj.overview }}
+        </p>
+        <div class="movie-vote">
+            <div v-if="castVote(movieObj.vote_average) === 0">
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div v-if="castVote(movieObj.vote_average) === 1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div v-if="castVote(movieObj.vote_average) === 2">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div v-if="castVote(movieObj.vote_average) === 3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div v-if="castVote(movieObj.vote_average) === 4">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div v-if="castVote(movieObj.vote_average) === 5">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
         </div>
     </div>
 </template>
@@ -86,6 +91,7 @@
                 }else if(lang === 'cs'){
                     lang = 'sx';
                 }
+                
                 const langUrl = this.flagApiUrl + lang.toUpperCase() + '.png';
                 return langUrl;
             },
@@ -109,5 +115,62 @@
 </script>
 
 <style lang="scss" scoped>
-
+    div.poster{
+        width: 342px;
+        height: 506px;
+        position: relative;
+        div.movie-poster{
+            height: 100%;
+            width: 100%;
+        }
+        h3.movie-title{
+            position: absolute;
+            padding: 0 1rem;
+            top: 2rem;
+            color: white;
+            display: none;
+        }
+        p.movie-language{
+            position: absolute;
+            padding: 0 1rem;
+            bottom: 1.5rem;
+            color: white;
+            display: none;
+            img{
+                margin-left: 0.6rem;
+            }
+        }
+        div.movie-vote{
+            position: absolute;
+            padding: 0 1rem;
+            bottom: 3.5rem;
+            color: white;
+            display: none;
+        }
+        p.movie-overview{
+            position: absolute;
+            padding: 0 1rem;
+            top: 25%;
+            color: white;
+            display: none;
+        }
+    }
+    div.poster:hover{
+        div.movie-poster{
+            filter: brightness(0.2);
+        }
+        h3.movie-title{
+            display: block;
+        }
+        p.movie-language{
+            display: flex;
+            align-items: center;
+        }
+        div.movie-vote{
+            display: block;
+        }
+        p.movie-overview{
+            display: block;
+        }
+    }
 </style>

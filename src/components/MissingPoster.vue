@@ -41,7 +41,6 @@ export default {
         }
         i{
             font-size: $fontSizeXL;
-
         }
     }
 </style>

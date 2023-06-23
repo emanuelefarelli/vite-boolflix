@@ -23,7 +23,7 @@ export default {
     @use '../styles/partials/mixins.scss' as *; 
     header{
         height: 150px;
-        background-color: rgb(68, 68, 68);
+        background-color: rgb(20, 20, 20);
         @include flex(row,space-around, center);
         img{
             height: 100%;

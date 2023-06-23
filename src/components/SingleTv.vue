@@ -1,18 +1,18 @@
 <template>
     <div v-if="tvObj.poster_path === null" class= "tv-poster">
-            <MissingPoster 
-                :movieTitle = "tvTitle"
-            />
-        </div>
-        <div v-else class="tv-poster">
-            <img :src="buildPoster(tvObj.poster_path)" alt="movie poster">
-        </div>
+        <MissingPoster 
+            :movieTitle = "tvTitle"
+        />
+    </div>
+    <div v-else class="tv-poster">
+        <img :src="buildPoster(tvObj.poster_path)" alt="movie poster">
+    </div>
     <h3>
         Titolo: {{ tvObj.name }} --
         Titolo originale: {{ tvObj.original_name }}
     </h3>
     <p>
-        Lingua originale: <img :src="flagUlr(tvObj.original_language)"> {{ tvObj.original_language }}
+        Lingua originale: <img :src="flagUlr(tvObj.original_language)">
     </p>
     <div v-if="castVote(tvObj.vote_average) === 0">
         <i class="fa-regular fa-star"></i>
