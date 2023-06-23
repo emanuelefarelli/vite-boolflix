@@ -115,11 +115,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '../styles/partials/mixins.scss' as *;
     div.poster{
+        @include flex();
         width: 342px;
         height: 506px;
         position: relative;
         div.movie-poster{
+            @include flex();
             height: 100%;
             width: 100%;
         }
@@ -150,8 +153,10 @@
         p.movie-overview{
             position: absolute;
             padding: 0 1rem;
-            top: 25%;
+            top: 30%;
             color: white;
+            height: 260px;
+            overflow: auto;
             display: none;
         }
     }

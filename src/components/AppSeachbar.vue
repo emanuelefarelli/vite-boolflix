@@ -1,6 +1,6 @@
 <template>
     <section class="input-search">
-        <input type="text" v-model="inputSearch" @keyup.enter="$emit('searchedMovies', inputSearch),$emit('searchedTv', inputSearch)">
+        <input type="text" placeholder="Cerca un film o serie tv" v-model="inputSearch" @keyup.enter="$emit('searchedMovies', inputSearch),$emit('searchedTv', inputSearch)">
         <button @click="$emit('searchedMovies', inputSearch),$emit('searchedTv', inputSearch)">
             Search
         </button>
@@ -21,13 +21,20 @@ export default {
 
 <style lang="scss" scoped>
     @use '../styles/partials/mixins.scss' as *;
+    @use '../styles/partials/variables.scss' as *;
     section.input-search{
         @include flex();
         padding: 2rem;
         input,
         button{
-            padding: 0.3rem;
+            padding: 0.5rem;
             margin-right: 1rem;
+        }
+        input{
+            width: 30%;
+        }
+        button{
+            font-size: $fontSizeS;
         }
     }
 </style>
