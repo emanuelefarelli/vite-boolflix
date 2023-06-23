@@ -5,7 +5,7 @@
         </h1>
         <ul class="movie-list">
             <h2>
-                Cerca un film!
+                Ancora nessun film trovato...
             </h2>
         </ul>
         <h1>
@@ -13,7 +13,7 @@
         </h1>
         <ul class="tv-list">
             <h2>
-                Cerca una serie tv!
+                Ancora nessuna serie tv trovata...
             </h2>
         </ul>
     </section>

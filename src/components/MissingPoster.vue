@@ -28,11 +28,11 @@ export default {
         @include flex(column);
         width: 342px;
         height: 506px;
-        background-color: rgb(176, 176, 255);
+        background-color: rgb(143, 143, 143);
         padding: 1rem;
         h2,
         i{
-            color: rgb(26, 26, 85);
+            color: rgb(37, 37, 37);
         }
         h2{
             font-size: $fontSizeL;
