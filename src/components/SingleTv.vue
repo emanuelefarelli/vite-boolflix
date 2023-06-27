@@ -90,6 +90,8 @@
                     lang = 'kr';
                 }else if(lang === 'cs'){
                     lang = 'sx';
+                }else if(lang === 'ta'){
+                    lang = 'in';
                 }
                 const langUrl = this.flagApiUrl + lang.toUpperCase() + '.png';
                 return langUrl;

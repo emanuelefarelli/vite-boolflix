@@ -66,7 +66,7 @@
 </template>
 
 <script>
-    import MissingPoster from './missingPoster.vue';
+    import MissingPoster from './MissingPoster.vue';
 
     export default {
         data(){
@@ -90,6 +90,8 @@
                     lang = 'kr';
                 }else if(lang === 'cs'){
                     lang = 'sx';
+                }else if(lang === 'ta'){
+                    lang = 'in';
                 }
                 
                 const langUrl = this.flagApiUrl + lang.toUpperCase() + '.png';
